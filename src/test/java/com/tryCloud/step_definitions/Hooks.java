@@ -68,7 +68,7 @@ public class Hooks {
     public void beforeStep(Scenario scenario){
 
         BrowserUtils.waitForPageToLoad(3);
-        BrowserUtils.sleep(Integer.parseInt(ConfigurationReader.getProperty("slow.motion")));
+       // BrowserUtils.sleep(Integer.parseInt(ConfigurationReader.getProperty("slow.motion")));
     }
 
 }
