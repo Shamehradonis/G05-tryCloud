@@ -24,8 +24,8 @@ public class LoginPage {
     public WebElement loginButton;
 
     public void login() {
-        usernameBox.sendKeys(ConfigurationReader.getProperty("Employee15"));
-        passwordBox.sendKeys(ConfigurationReader.getProperty("Employee123"));
+        usernameBox.sendKeys(ConfigurationReader.getProperty("username"));
+        passwordBox.sendKeys(ConfigurationReader.getProperty("password"));
         loginButton.click();
     }
 
