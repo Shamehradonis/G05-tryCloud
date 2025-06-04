@@ -46,4 +46,16 @@ public class LoginPage {
             System.err.println("Not valid SubmitType");
         }
     }
+
+    @FindBy(xpath = "//p[@class='warning wrongPasswordMsg']")
+    public WebElement wrongCredentialsMassage;
+
+    @FindBy(xpath = "(//img)[3]")
+    public WebElement passwordVisibilityToggle;
+
+    @FindBy(id = "lost-password")
+    public WebElement forgetPasswordLink;
+
+    @FindBy(id = "reset-password-submit")
+    public WebElement resetPasswordButton;
 }
