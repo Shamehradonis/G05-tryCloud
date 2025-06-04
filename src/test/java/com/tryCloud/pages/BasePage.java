@@ -16,4 +16,7 @@ public class BasePage {
 
     @FindBy(id = "settings")
     public WebElement account;
+
+    @FindBy(xpath = "//li[@data-id='logout']")
+    public WebElement logoutButton;
 }
