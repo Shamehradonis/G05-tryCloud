@@ -19,4 +19,7 @@ public class BasePage {
 
     @FindBy(xpath = "//li[@data-id='logout']")
     public WebElement logoutButton;
+
+    @FindBy(xpath = "(//li[@data-id='deck'])[1]")
+    public WebElement deckModule;
 }
