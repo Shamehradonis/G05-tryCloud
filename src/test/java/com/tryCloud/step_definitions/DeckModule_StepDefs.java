@@ -162,6 +162,7 @@ deckModulePage.deleteBoardButton.click();
     @Then("user should see that card {string} in board {string} under list {string}")
     public void user_should_see_that_card_in_board_under_list(String expectedCardName,String boardName, String listName) {
         Driver.getDriver().findElement(By.xpath("//span[@title='"+boardName+"']")).click();
+        BrowserUtils.sleep(1);
         String actualCardName = Driver.getDriver().findElement(By.xpath("//h3[normalize-space(text())='"+listName+"']/following::span[4]")).getText();
         System.out.println("actualCardName = " + actualCardName);
         Assert.assertEquals(actualCardName,expectedCardName);
