@@ -1,9 +1,12 @@
 package com.tryCloud.utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Driver {
 
@@ -38,8 +41,24 @@ public class Driver {
              */
             switch (browserType){
                 case "chrome":
-                    //WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver());
+                    ChromeOptions options = new ChromeOptions();
+
+                    // Automatically allow camera and microphone
+                    Map<String, Object> prefs = new HashMap<>();
+                    prefs.put("profile.default_content_setting_values.media_stream_camera", 1);
+                    prefs.put("profile.default_content_setting_values.media_stream_mic", 1);
+                    prefs.put("profile.default_content_setting_values.geolocation", 1);
+                    prefs.put("profile.default_content_setting_values.notifications", 1);
+                    options.setExperimentalOption("prefs", prefs);
+
+                    // Disable infobars and popups
+                    options.addArguments("--use-fake-ui-for-media-stream"); // auto-accept camera/mic
+                    options.addArguments("--use-fake-device-for-media-stream"); // optional: use dummy stream
+                    options.addArguments("--disable-infobars");
+                    options.addArguments("--disable-popup-blocking");
+                    options.addArguments("--disable-notifications");
+
+                    driverPool.set(new ChromeDriver(options));
                     driverPool.get().manage().window().maximize();
                     driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;

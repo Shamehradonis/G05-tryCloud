@@ -22,4 +22,7 @@ public class BasePage {
 
     @FindBy(xpath = "(//li[@data-id='deck'])[1]")
     public WebElement deckModule;
+
+    @FindBy(xpath = "(//a[@aria-label='Talk'])[1]")
+    public WebElement talkModule;
 }
