@@ -112,7 +112,7 @@ public class TalkModule_StepDefs {
     public void a_call_window_should_open() {
         talkModulePage.conversationListButton.click();
         BrowserUtils.sleep(2);
-        talkModulePage.youStartedACall.isDisplayed();
+        Assert.assertTrue(talkModulePage.youStartedACall.isDisplayed());
         BrowserUtils.sleep(2);
     }
     @When("the user clicks the Leave Call button")
@@ -122,7 +122,7 @@ public class TalkModule_StepDefs {
     }
     @Then("the call window should close")
     public void the_call_window_should_close() {
-        talkModulePage.youLeftTheACall.isDisplayed();
+        Assert.assertTrue(talkModulePage.youLeftTheACall.isDisplayed());
         BrowserUtils.sleep(2);
     }
     @Given("the user clicks on three dots of any {string} from list")

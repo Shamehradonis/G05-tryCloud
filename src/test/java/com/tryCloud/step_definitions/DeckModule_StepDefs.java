@@ -137,7 +137,7 @@ deckModulePage.deleteBoardButton.click();
     }
     @Then("User profile icon should be displayed near the dots icon")
     public void user_profile_icon_should_be_displayed_near_the_dots_icon() {
-        deckModulePage.accountIcon.isDisplayed();
+        Assert.assertTrue(deckModulePage.accountIcon.isDisplayed());
     }
     @When("user select {string} by clicking select a board")
     public void user_select_by_clicking_select_a_board(String boardName) {
