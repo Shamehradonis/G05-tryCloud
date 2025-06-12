@@ -9,14 +9,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class FilesModule_StepDefinitions {
     FilesPage filesPage = new FilesPage();
@@ -64,7 +63,6 @@ public class FilesModule_StepDefinitions {
 
         BrowserUtils.waitFor(3);
 
-
     }
 
     @And("the file name {string} should be visible in the list")
@@ -87,14 +85,17 @@ public class FilesModule_StepDefinitions {
 
     @Then("the user should name the folder {string}")
     public void theUserShouldNameTheFolder(String expectedFolderName) {
-        filesPage.newFolderInput.sendKeys(expectedFolderName + Keys.ENTER);
 
+        filesPage.newFolderInput.clear();
+        filesPage.newFolderInput.sendKeys(expectedFolderName + Keys.ENTER);
+        BrowserUtils.waitFor(2);
     }
 
     @And("the folder name {string} should be visible in the list")
     public void theFolderNameShouldBeVisibleInTheList(String expectedFolderName) {
         String actualFolderName = Driver.getDriver().findElement(By.xpath("//a[contains(@href, '" + expectedFolderName + "')]")).getText();
         System.out.println(actualFolderName);
+        BrowserUtils.waitFor(2);
         Assert.assertEquals(actualFolderName, expectedFolderName);
     }
 
@@ -155,6 +156,10 @@ public class FilesModule_StepDefinitions {
 
     @And("the user click on Deleted folder option")
     public void theUserClickOnDeleteFolderOption() {
+        WebDriver driver = Driver.getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        // Scroll down by 500 pixels
+        js.executeScript("window.scrollBy(0,500)");
         filesPage.deleteFolderOption.click();
     }
 
@@ -195,4 +200,6 @@ public class FilesModule_StepDefinitions {
 
         Assert.assertTrue(summaryOfFilesAndFolders.isDisplayed());
     }
+
 }
+
