@@ -81,19 +81,20 @@ Assert.assertEquals(actualError,expectedError);
     }
     @Then("the user should see the Forgot password? link.")
     public void the_user_should_see_the_forgot_password_link() {
-
+        Assert.assertTrue(loginPage.forgetPasswordLink.isDisplayed());
     }
     @When("the user click on the Forgot password? link.")
     public void the_user_click_on_the_forgot_password_link() {
-    loginPage.forgetPasswordLink.isDisplayed();
+        loginPage.forgetPasswordLink.click();
     }
     @When("Wait for the password reset page to load.")
     public void wait_for_the_password_reset_page_to_load() {
-    loginPage.forgetPasswordLink.click();
+    BrowserUtils.waitFor(2);
     }
     @Then("The user should see the Reset Password button")
     public void the_user_should_see_the_reset_password_button() {
-        loginPage.resetPasswordButton.isDisplayed();
+
+        Assert.assertTrue(loginPage.resetPasswordButton.isDisplayed());
     }
     @Then("the username field should have placeholder {string}")
     public void the_username_field_should_have_placeholder(String expectedPlaceholder1) {
