@@ -31,18 +31,22 @@ public class DashboardFunctionalityPage {
     public WebElement profileBotton;
 
     @FindBy (xpath = "//span[@title='Employee15']")
-    public WebElement username ;
+    public WebElement username ;//(xpath = "//span[@title='Employee15']")
 
+//**************************************************************
 
     @FindBy (xpath = "//a[.='Customize']")
     public WebElement customizeButton;
 
-  // @FindBy()
-  //  public List<WebElement> widgets;
+   @FindBy(xpath = "//label")
+    public List<WebElement> widgets;
 
-  // public List<String> getWidgetsNames(){
-  //     return BrowserUtils.getElementsText(this.widgets);
-  // }
+   public List<String> getWidgetsNames(){
+      return BrowserUtils.getElementsText(this.widgets);
+   }//it's not giving me text of elements. it's printing empty list =[ , , , , , ]
+
+//**************************************************************************************
+
 
 
     @FindBy(id = "status-status")
@@ -71,7 +75,7 @@ public class DashboardFunctionalityPage {
     public WebElement clearStatusButton;
 
 
-   // @FindBy (class = "status-buttons__primary primary")
+    //@FindBy (class = "status-buttons__primary primary")
     public WebElement setStatusBotton;
 
 

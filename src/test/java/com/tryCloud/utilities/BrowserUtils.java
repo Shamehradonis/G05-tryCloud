@@ -160,8 +160,7 @@ public class BrowserUtils {
     public static List<String> getElementsText(List<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
-            waitForVisibility(el, 30);
-            elemTexts.add(el.getText());
+            elemTexts.add(el.getAttribute("innerText"));
         }
         return elemTexts;
     }
