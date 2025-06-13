@@ -51,9 +51,4 @@ public class CalendarModulePage {
 
     @FindBy(xpath = "//span[.='Delete']")
     public WebElement deleteButton;
-
-
-
 }
-//td[@data-month='0']
-//td[@data-year='2022']
