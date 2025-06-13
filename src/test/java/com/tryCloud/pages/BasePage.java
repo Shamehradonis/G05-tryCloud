@@ -25,4 +25,7 @@ public class BasePage {
 
     @FindBy(xpath = "(//a[@aria-label='Talk'])[1]")
     public WebElement talkModule;
+
+    @FindBy(xpath ="(//a[@aria-label='Calendar'])[1]")
+    public WebElement calendarModuleButton;
 }
